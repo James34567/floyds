@@ -1,0 +1,50 @@
+import java.util.Scanner;
+class floyds
+{
+ public static void main(String args[])
+ {
+ Scanner sc =new Scanner(System.in);
+ System.out.println("Enter the number of vetices");
+ int n=sc.nextInt();
+ int adj[][]=new int[20][20];
+ System.out.println("Enter the elements of the Adjacency Matrix");
+ for(int i=1;i<=n;i++)
+ {
+ for(int j=1;j<=n;j++)
+ {
+ adj[i][j]=sc.nextInt();
+ }
+ }
+ flyd(adj,n);
+ System.out.println("The shortest path is");
+ for(int i=1;i<=n;i++)
+ {
+ for(int j=1;j<=n;j++)
+ {
+ System.out.print(adj[i][j]+" ");
+ }
+ System.out.println();
+ }
+ }
+static int flyd(int adj[][],int n)
+{
+ for(int k=1;k<=n;k++)
+ {
+ for(int i=1;i<=n;i++)
+ {
+ for(int j=1;j<=n;j++)
+ {
+ adj[i][j]=min(adj[i][j],(adj[i][k]+adj[k][j]));
+ }
+ }
+ }
+ return 0;
+ 
+}
+static int min(int a,int b)
+{
+ if(a<b){
+ return a;
+ }
+ return b;
+}}
